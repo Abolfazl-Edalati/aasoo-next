@@ -1,7 +1,7 @@
 import { ChevronLeftIcon } from "lucide-react";
-import story from "../assets/images/story.webp";
-import product1 from "../assets/images/product-1.webp";
-import product2 from "../assets/images/product-2.webp";
+import story from "../_assets/images/story.webp";
+import product1 from "../_assets/images/product-1.webp";
+import product2 from "../_assets/images/product-2.webp";
 import Image from "next/image";
 
 const Story = () => {

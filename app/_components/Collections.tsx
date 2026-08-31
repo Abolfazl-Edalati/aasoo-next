@@ -1,7 +1,7 @@
 import Image from "next/image";
-import c1 from "../assets/images/collections-1.jpg";
-import c2 from "../assets/images/collections-2.jpg";
-import c3 from "../assets/images/collections-3.jpg";
+import c1 from "../_assets/images/collections-1.jpg";
+import c2 from "../_assets/images/collections-2.jpg";
+import c3 from "../_assets/images/collections-3.jpg";
 
 const Collections = () => {
   return (

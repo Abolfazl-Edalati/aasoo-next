@@ -1,5 +1,5 @@
 import Image from "next/image";
-import img from "./../assets/images/inspiration.png";
+import img from "./../_assets/images/inspiration.png";
 
 const Inspiration = () => {
   return (

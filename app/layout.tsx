@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
+import NavBar from "./_components/NavBar";
+import Footer from "./_components/Footer";
 
 const notoSansArabic = Noto_Sans_Arabic({
   variable: "--font-noto-sans-arabic",

@@ -7,12 +7,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import p3 from "./../assets/images/Product-3.png";
-import p4 from "./../assets/images/Product-4.png";
-import p5 from "./../assets/images/Product-5.png";
-import p6 from "./../assets/images/Product-6.jpg";
-import p7 from "./../assets/images/Product-7.png";
-import p8 from "./../assets/images/Product-8.jpg";
+import p3 from "./../_assets/images/Product-3.png";
+import p4 from "./../_assets/images/Product-4.png";
+import p5 from "./../_assets/images/Product-5.png";
+import p6 from "./../_assets/images/Product-6.jpg";
+import p7 from "./../_assets/images/Product-7.png";
+import p8 from "./../_assets/images/Product-8.jpg";
 
 // import required modules
 import { Pagination } from "swiper/modules";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import giftImg from "./../assets/images/Product-7.png";
+import giftImg from "./../_assets/images/Product-7.png";
 
 const Gift = () => {
   return (

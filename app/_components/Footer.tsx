@@ -1,5 +1,5 @@
-import telegram from "./../assets/svg/telegram.svg";
-import instagram from "./../assets/svg/instagram.svg";
+import telegram from "./../_assets/svg/telegram.svg";
+import instagram from "./../_assets/svg/instagram.svg";
 import Image from "next/image";
 
 const Footer = () => {
