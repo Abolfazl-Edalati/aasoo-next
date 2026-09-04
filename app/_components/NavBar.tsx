@@ -1,6 +1,12 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/dist/client/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const NavBar = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+
   return (
     <div className="navbar bg-base-100 shadow-sm flex justify-between">
       <div className="flex gap-2">
@@ -46,17 +52,24 @@ const NavBar = () => {
         <li>
           <a>هنر بافت</a>
         </li>
-        <li>
-          <a>فروشگاه</a>
+        <li
+          className={
+            pathname === "/store" ? "bg-primary rounded-sm text-white" : ""
+          }
+        >
+          <Link href="/store">فروشگاه</Link>
         </li>
         <li>
           <a>دسته بندی ها</a>
         </li>
       </ul>
-      <div className="">
-        <a className="btn btn-ghost text-xl flex flex-col items-center gap-0">
+      <div>
+        <Link
+          href={"/"}
+          className="btn btn-ghost text-xl flex flex-col items-center gap-0"
+        >
           Aasoo <span className="text-primary text-sm font-mono">Macrame</span>
-        </a>
+        </Link>
       </div>
     </div>
   );
