@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/dist/client/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
     <div className="navbar bg-base-100 shadow-sm flex justify-between">
@@ -51,6 +50,16 @@ const NavBar = () => {
         </li>
         <li>
           <a>هنر بافت</a>
+        </li>
+        <li>
+          <Link
+            href="/product"
+            className={
+              pathname === "/product" ? "bg-primary rounded-sm text-white" : ""
+            }
+          >
+            محصولات
+          </Link>
         </li>
         <li
           className={
