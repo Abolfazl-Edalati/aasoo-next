@@ -12,11 +12,11 @@ export async function GET(
   const page = url.searchParams.get("page");
   const search = url.searchParams.get("search");
 
-  console.log(category, page, search);
-
   return NextResponse.json({
     id,
-    name: "iPhone",
+    category,
+    page,
+    search,
   });
 }
 
