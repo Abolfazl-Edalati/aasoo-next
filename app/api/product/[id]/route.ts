@@ -6,6 +6,14 @@ export async function GET(
 ) {
   const { id } = await params;
 
+  const url = new URL(request.url);
+
+  const category = url.searchParams.get("category");
+  const page = url.searchParams.get("page");
+  const search = url.searchParams.get("search");
+
+  console.log(category, page, search);
+
   return NextResponse.json({
     id,
     name: "iPhone",
