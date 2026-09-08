@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   return NextResponse.json([
-    { id: 1, name: "iphone" },
-    { id: 2, name: "MacBook" },
+    { id: 1, name: "iphone", price: 1500 },
+    { id: 2, name: "MacBook", price: 1900 },
   ]);
 }
 

@@ -21,6 +21,18 @@ export async function GET(
   });
 }
 
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const id = await params;
+
+  return NextResponse.json(
+    { message: `محصول با شناسه ${id} حذف شد` },
+    { status: 200 },
+  );
+}
+
 export async function PUT(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
@@ -29,9 +41,28 @@ export async function PUT(
 
   const body = await request.json();
 
-  const updatedProduct = { id, name: body.name, price: body.price };
+  const { name, price } = body;
 
-  return NextResponse.json(updatedProduct, { status: 200 });
+  if (!name || !price) {
+    return NextResponse.json(
+      { message: "نام و قیمت اجباری میباشد" },
+      { status: 400 },
+    );
+  }
+
+  const updatedProduct = {
+    id,
+    name,
+    price,
+  };
+
+  return NextResponse.json(
+    {
+      message: "محصول با موفقیت ویرایش شد.",
+      product: updatedProduct,
+    },
+    { status: 201 },
+  );
 }
 
 export async function PATCH(
@@ -42,20 +73,22 @@ export async function PATCH(
 
   const body = await request.json();
 
-  return NextResponse.json({
-    id,
-    ...body,
-  });
-}
+  const { name } = body;
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> },
-) {
-  const id = await params;
+  const oldProduct = {
+    id,
+    name: "iPhone 16",
+    price: 1000,
+    category: "phone",
+  };
+
+  const updatedProduct = {
+    ...oldProduct,
+    ...(name !== undefined && { name }),
+  };
 
   return NextResponse.json(
-    { message: `محصول با شناسه ${id} حذف شد` },
+    { message: "محصول با موفقیت ویرایش شد.", oldProduct, updatedProduct },
     { status: 200 },
   );
 }
