@@ -1,3 +1,4 @@
+import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
 
 export async function GET() {
@@ -10,19 +11,23 @@ export async function GET() {
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const name = body.name;
+  const { name, price } = body;
 
-  if (!name) {
+  if (!name || !price) {
     return NextResponse.json(
-      { message: "نام محصول الزامی است" },
+      { messasge: "نام و قیمت اجباری هستند" },
       { status: 400 },
     );
   }
 
-  console.log(body);
+  const product = {
+    id: randomUUID(),
+    name,
+    price,
+  };
 
   return NextResponse.json(
-    { message: "محصول اضافه شد", product: { name } },
+    { message: "محصول جدید با موفقیت اضافه شد", product },
     { status: 201 },
   );
 }
