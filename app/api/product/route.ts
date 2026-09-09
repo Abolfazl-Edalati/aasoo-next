@@ -1,11 +1,9 @@
 import { randomUUID } from "crypto";
 import { NextResponse } from "next/server";
+import PRODUCTS from "../_lib/mock-data";
 
 export async function GET() {
-  return NextResponse.json([
-    { id: 1, name: "iphone", price: 1500 },
-    { id: 2, name: "MacBook", price: 1900 },
-  ]);
+  return NextResponse.json(PRODUCTS);
 }
 
 export async function POST(request: Request) {

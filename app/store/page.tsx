@@ -2,7 +2,7 @@
 
 export default function StorePage() {
   async function getAllProduct() {
-    const res = await fetch("/api/product/1?category=shoe&page=2", {
+    const res = await fetch("/api/product/56", {
       method: "GET",
     });
 
@@ -55,8 +55,6 @@ export default function StorePage() {
         name: "iPhone 18",
       }),
     });
-
-    console.log("STATUS:", res.status);
 
     const result = await res.json();
 

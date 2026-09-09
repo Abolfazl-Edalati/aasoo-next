@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { randomUUID } from "crypto";
+import PRODUCTS from "../../_lib/mock-data";
 
 export async function GET(
   request: Request,
@@ -7,30 +8,24 @@ export async function GET(
 ) {
   const { id } = await params;
 
-  const url = new URL(request.url);
+  // const url = new URL(request.url);
+  // const category = url.searchParams.get("category");
+  // const page = url.searchParams.get("page");
+  // const search = url.searchParams.get("search");
 
-  const category = url.searchParams.get("category");
-  const page = url.searchParams.get("page");
-  const search = url.searchParams.get("search");
+  const product = PRODUCTS.find((p) => p.id === id);
 
-  return NextResponse.json({
-    id,
-    category,
-    page,
-    search,
-  });
-}
+  if (!product)
+    return NextResponse.json(
+      {
+        message: "محصول مورد نظر یافت نشد.",
+      },
+      {
+        status: 404,
+      },
+    );
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: Promise<{ id: string }> },
-) {
-  const id = await params;
-
-  return NextResponse.json(
-    { message: `محصول با شناسه ${id} حذف شد` },
-    { status: 200 },
-  );
+  return NextResponse.json(product);
 }
 
 export async function PUT(
