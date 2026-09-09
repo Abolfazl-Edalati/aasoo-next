@@ -1,31 +1,42 @@
 import { NextResponse } from "next/server";
-import { randomUUID } from "crypto";
 import PRODUCTS from "../../_lib/mock-data";
 
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
-  const { id } = await params;
+  try {
+    const { id } = await params;
+    throw new Error("Database connection failed");
 
-  // const url = new URL(request.url);
-  // const category = url.searchParams.get("category");
-  // const page = url.searchParams.get("page");
-  // const search = url.searchParams.get("search");
+    // const url = new URL(request.url);
+    // const category = url.searchParams.get("category");
+    // const page = url.searchParams.get("page");
+    // const search = url.searchParams.get("search");
 
-  const product = PRODUCTS.find((p) => p.id === id);
+    const product = PRODUCTS.find((p) => p.id === id);
 
-  if (!product)
+    if (!product)
+      return NextResponse.json(
+        {
+          message: "محصول مورد نظر یافت نشد.",
+        },
+        {
+          status: 404,
+        },
+      );
+
+    return NextResponse.json(product);
+  } catch (error) {
+    console.log(error);
+
     return NextResponse.json(
       {
-        message: "محصول مورد نظر یافت نشد.",
+        message: "خطای داخلی سرور",
       },
-      {
-        status: 404,
-      },
+      { status: 500 },
     );
-
-  return NextResponse.json(product);
+  }
 }
 
 export async function PUT(
