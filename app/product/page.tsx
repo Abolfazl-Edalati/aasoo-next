@@ -1,6 +1,13 @@
 import { randomUUID } from "crypto";
+import Link from "next/link";
 
-export default function ProductPage() {
+export default async function ProductPage() {
+  type Product = {
+    id: string;
+    name: string;
+    price: string;
+  };
+
   async function addProduct(data: FormData) {
     "use server";
 
@@ -20,6 +27,10 @@ export default function ProductPage() {
     console.log(result);
   }
 
+  const res = await fetch("http://localhost:3000/api/product");
+
+  const result = await res.json();
+
   return (
     <>
       <div className="flex justify-between items-center m-6">
@@ -38,6 +49,15 @@ export default function ProductPage() {
             اضافه کردن محصول
           </button>
         </form>
+      </div>
+      <div>
+        <ul>
+          {result.map((p: Product) => (
+            <li key={p.id}>
+              <Link href={`/product/${p.id}`}>{p.name}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
